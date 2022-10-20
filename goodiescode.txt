@@ -1,0 +1,81 @@
+package com.program.java;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Goodies
+{
+	static int minimumDiffrence(int arr[], int a, int b)
+	{
+		int result = Integer.MAX_VALUE;
+		Arrays.sort(arr);
+		for (int i=0; i<= a-b;i++)
+			result = Math.min(result, arr[i + b - 1] - arr[i]);
+		return result;
+		
+	}
+	static int findGoodies(int res,int arr[], int a, int b)
+	{
+		int result = Integer.MAX_VALUE;
+		for(int i=0; i<=a; i++)
+		{
+			result = Math.min(result, arr[i + b- 1] - arr[i]);
+			if (res==result)
+				return i;
+					
+		}
+		return 0;
+	}
+	public static void main(String[] args) throws IOException 
+	{
+	    
+	    int arr[]={7980,22349,999,2799,229900,11101,9999,2195,9800,4999};
+	    String items[]={ "MI Band: 999","Sandwich Toaster: 2195" ,"Cult Pass: 2799","Scale: 4999","Fitbit Plus: 7980","Microwave Oven: 9800"  ,"Alexa: 9999","Digital Camera: 11101", "IPods: 22349","Macbook Pro: 229900" };
+	    int a = arr.length;
+	    
+	    Scanner scan = new Scanner(System.in);
+	    System.out.println("Enter the number of employees");
+	    
+	    int b=scan.nextInt();
+	    int result=minimumDiffrence(arr, a, b);  
+	    System.out.println("Number of the employees:"+b); 
+	    int index=findGoodies(result,arr,a,b);
+	    System.out.println(" the goodies selected for distribution are:");
+	    for(int i=index;i<index+b;i++)
+	    System.out.println(items[i]);
+	      System.out.println("the price difference between the chosen goodie with highest price and the lowest price is:"+result);
+	} 
+}	
+		
+Enter the number of employees
+4
+Number of the employees:4
+ the goodies selected for distribution are:
+Fitbit Plus: 7980
+Microwave Oven: 9800
+Alexa: 9999
+Digital Camera: 11101
+the price difference between the chosen goodie with highest price and the lowest price is:3121
+Enter the number of employees
+6
+Number of the employees:6
+ the goodies selected for distribution are:
+Sandwich Toaster: 2195
+Cult Pass: 2799
+Scale: 4999
+Fitbit Plus: 7980
+Microwave Oven: 9800
+Alexa: 9999
+the price difference between the chosen goodie with highest price and the lowest price is:7804
+Enter the number of employees
+2
+Number of the employees:2
+ the goodies selected for distribution are:
+Microwave Oven: 9800
+Alexa: 9999
+the price difference between the chosen goodie with highest price and the lowest price is:199
+
+
+
+
